@@ -24,8 +24,8 @@
 			</sql:query>
 			<c:choose>
 				<c:when test="${SQLresult.rowCount != 0}">
-					<c:set var="namaPengguna" value="${param.username}"></c:set>
-					<c:set var="Pengguna" value="true"></c:set>
+					<c:set var="namaPengguna" value="${param.username}" scope="session"></c:set>
+					<c:redirect url="welcome.jsp" /> 
 				</c:when>
 				<c:when test="${SQLresult.rowCount == 0}">
 		No Result
@@ -33,7 +33,7 @@
 			</c:choose>
 			<c:if test="${not empty Pengguna }">
 				<c:redirect url="welcome.jsp">
-					<c:param name="username" value="${username}" />
+
 				</c:redirect>
 			</c:if>
 		</c:when>
